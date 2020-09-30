@@ -2,15 +2,12 @@
 
 ## Init Env For CentOS
 ```shell
-bash init.sh
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/adshao/nucypher-scripts/master/init.sh)"
 ```
 
-## Set Alias
+## Activate Alias
 ```shell
-alias geth='docker-compose run --rm geth /usr/local/bin/geth'
-alias clef='docker-compose run --rm clef'
-alias nucypher='docker-compose run --rm nucypher nucypher'
-alias ursula='docker-compose run --rm nucypher nucypher ursula'
+source ~/.bashrc
 ```
 
 ## Init Clef
