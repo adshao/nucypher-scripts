@@ -32,5 +32,5 @@ ursula init
 
 ## Run Worker as Daemon
 ```shell
-docker-compose run -d nucypher ursula run
+docker-compose run -d nucypher nucypher ursula run
 ```

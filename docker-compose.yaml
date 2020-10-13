@@ -20,12 +20,16 @@ services:
         volumes:
             - /root/clef/data:/root/.clef
             - /root/geth/data:/root/.ethereum
-
+            - /root/clef/rules.js:/clef/rules.js
+    
     nucypher:
-        image: nucypher/nucypher:latest
+        image: adshao/nucypher:latest
         container_name: nucypher
         restart: always
         network_mode: "host"
+        environment:
+            - NUCYPHER_WORKER_ETH_PASSWORD
+            - NUCYPHER_KEYRING_PASSWORD
         volumes:
             - /root/clef/data:/root/.clef
             - /root/geth/data:/root/.ethereum
