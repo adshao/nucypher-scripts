@@ -1,0 +1,36 @@
+version: "3.8"
+
+services:
+    geth:
+        image: ethereum/client-go:stable
+        container_name: geth
+        restart: always
+        network_mode: "host"
+        command: ["--syncmode", "light", "--rpc", "--signer=/root/.clef/clef.ipc", "--rinkeby"]
+        volumes:
+            - /root/geth/data1:/root/.ethereum
+            - /root/clef/data1:/root/.clef
+
+    clef:
+        image: adshao/clef
+        container_name: clef
+        restart: always
+        network_mode: "host"
+        command: ["--keystore", "/root/.ethereum/keystore", "--chainid", "4", "--advanced", "--rules", "/clef/rules.js"]
+        volumes:
+            - /root/clef/data1:/root/.clef
+            - /root/geth/data1:/root/.ethereum
+            - /root/clef/rules.js:/clef/rules.js
+
+    nucypher:
+        image: adshao/nucypher:test
+        container_name: nucypher
+        restart: always
+        network_mode: "host"
+        environment:
+            - NUCYPHER_WORKER_ETH_PASSWORD
+            - NUCYPHER_KEYRING_PASSWORD
+        volumes:
+            - /root/clef/data1:/root/.clef
+            - /root/geth/data1:/root/.ethereum
+            - /root/nucypher/data1:/root/.local/share/nucypher

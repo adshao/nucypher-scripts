@@ -23,7 +23,7 @@ pip install docker-compose
 mkdir -p /root/geth/data /root/clef/data /root/nucypher/data
 
 git clone https://github.com/adshao/nucypher-scripts
-cp nucypher-scripts/docker-compose.yaml .
+cp nucypher-scripts/docker-compose.yaml* .
 cp nucypher-scripts/rules.js /root/clef/
 
 cat <<EOF >> ~/.bashrc
