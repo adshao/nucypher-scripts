@@ -15,6 +15,17 @@ source ~/.bashrc
 clef init
 ```
 
+## Create worker account
+```shell
+clef newaccount
+```
+
+## Update rules.js
+Update rules.js and load it:
+```shell
+clef attest $(sha256sum /root/clef/rules.js | awk '{print $1}')
+```
+
 ## Start Clef
 ```shell
 clef
@@ -32,5 +43,12 @@ ursula init
 
 ## Run Worker as Daemon
 ```shell
-docker-compose run -d nucypher nucypher ursula run
+export NUCYPHER_WORKER_ETH_PASSWORD=
+export NUCYPHER_KEYRING_PASSWORD=
+docker-compose run --name ursula -d nucypher nucypher ursula run --prometheus --metrics-port 9101
+```
+
+## Verify Ursula
+```shell
+docker exec -it ursula nucypher ursula run -I
 ```
