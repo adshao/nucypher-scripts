@@ -3,7 +3,7 @@ function ApproveListing() {
 }
 
 function ApproveTx(r) {
-	if (r.transaction.to.toLowerCase() == "0x6a6f917a3ff3d33d26bb4743140f205486cd6b4b".toLowerCase()) {
+	if (r.transaction.to.toLowerCase() == "0xbbD3C0C794F40c4f993B03F65343aCC6fcfCb2e2".toLowerCase()) {
 		return "Approve"
 	}
     return "Reject"

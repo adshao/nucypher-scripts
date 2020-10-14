@@ -23,7 +23,7 @@ services:
             - /root/clef/rules.js:/clef/rules.js
     
     nucypher:
-        image: adshao/nucypher:latest
+        image: adshao/nucypher:stable
         container_name: nucypher
         restart: always
         network_mode: "host"
