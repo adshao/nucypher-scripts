@@ -35,3 +35,16 @@ services:
             - /root/geth/data:/root/.ethereum
             - /root/nucypher/data:/root/.local/share/nucypher
 
+    ursula:
+        image: adshao/nucypher:stable
+        container_name: ursula
+        restart: always
+        network_mode: "host"
+        command: ["nucypher", "ursula", "run", "--teacher", "mainnet.nucypher.network", "--prometheus", "--metrics-port", "9101"]
+        environment:
+            - NUCYPHER_WORKER_ETH_PASSWORD
+            - NUCYPHER_KEYRING_PASSWORD
+        volumes:
+            - /root/clef/data:/root/.clef
+            - /root/geth/data:/root/.ethereum
+            - /root/nucypher/data:/root/.local/share/nucypher
